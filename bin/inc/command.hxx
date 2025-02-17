@@ -18,7 +18,7 @@
 namespace eazy
 {
     // Alias. To reduce typing
-    using CommandArgs = std::forward_list<std::u8string>;
+    using CommandArgs = std::forward_list<std::string>;
 
     // Enum for the Command's handle result
     enum CommandResult {
@@ -39,9 +39,8 @@ namespace eazy
              * @param eazy::CommandArgs& Arguments for the handle to pass in (Empty arguments by default)
              */
             Command(std::string name, 
-                std::function<CommandResult(const eazy::CommandArgs&)>& handle, 
+                CommandResult(*handle)(const eazy::CommandArgs&), 
                 const eazy::CommandArgs& arguments = {});
-
             /**
              * @brief Returns the name set for the command
              * 
@@ -70,6 +69,11 @@ namespace eazy
              */
             const std::function<eazy::CommandResult(const eazy::CommandArgs&)>& get_handle() const noexcept;
             
+            /**
+             * @brief () Operator overloading
+             */
+            void operator()();
+
         private:
             // Command's name
             std::string name;
