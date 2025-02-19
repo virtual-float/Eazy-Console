@@ -1,5 +1,3 @@
-
-
 #include <fileMan.hxx>
 #include <filesystem>
 #include <istream>

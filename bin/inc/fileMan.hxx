@@ -1,3 +1,11 @@
+/**
+ * @file fileMan.hxx
+ * @brief few useful tools to manage files
+ * @author Naticzka
+ * 
+ * @date February 19th, 2025
+ */
+
 #pragma once
 #ifndef FILEMAN_HXX_INCLUDED
 #define FILEMAN_HXX_INCLUDED
