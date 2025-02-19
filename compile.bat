@@ -33,28 +33,33 @@ SET finalexe=%cd%\main.exe
 
 SET alloutputfiles=%outputmainfile%
 
+echo compilation logs: > compilationlogs.txt
+
 REM bin
 for %%f in (%srcBINDIR%\*.cpp) do (
     SET "file=%%f"
     SET "outputfile=!file:.cpp=.o!"
     SET "outputfile=!outputfile:%srcBINDIR%=%objBINDIR%!"
-    echo !outputfile!
     echo compiling !file! ...
-    %compiler% -c !file! %gpar% %fullcver% -I%incBINDIR% -o !outputfile!
+    echo %compiler% -c !file! %gpar% %fullcver% -I"%incBINDIR%" -o !outputfile! >> compilationlogs.txt
+    %compiler% -c !file! %gpar% %fullcver% -I"%incBINDIR%" -o !outputfile!
     if !errorlevel! neq 0 exit /b !errorlevel!
-    SET alloutputfiles=%alloutputfiles% !outputfile!
+    SET alloutputfiles=!alloutputfiles! !outputfile!
     echo compiling !file! is done
 )
 
 REM compile main file
 echo compiling the main file (%mainfile%)...
-%compiler% -c %mainfile% %gpar% %fullcver% -I%incBINDIR% -o %outputmainfile%
+echo %compiler% -c %mainfile% %gpar% %fullcver% -I"%incBINDIR%" -o %outputmainfile% >> compilationlogs.txt
+%compiler% -c %mainfile% %gpar% %fullcver% -I"%incBINDIR%" -o %outputmainfile%
 if !errorlevel! neq 0 exit /b !errorlevel!
 echo compiling the main file (%mainfile%) is done
 
 REM link them
 echo producing the .exe file (%finalexe%)...
+echo %compiler% %alloutputfiles% %gpar% %fullcver% -o %finalexe% >> compilationlogs.txt
 %compiler% %alloutputfiles% %gpar% %fullcver% -o %finalexe%
+if !errorlevel! neq 0 exit /b !errorlevel!
 echo the final .exe file (%finalexe%) has been produced
 
 REM running
