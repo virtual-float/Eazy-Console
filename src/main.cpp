@@ -1,5 +1,6 @@
 #include <iostream>
 #include "command.hxx"
+#include "fileMan.hxx"
 
 
 // For testing purposes
@@ -18,6 +19,22 @@ int main()
     
     // Invoking the object's handle
     cmd();
-    
+
+    // tests
+    // eazy::fileManNode test = eazy::fileManNode("test.txt");
+    // std::cout << std::endl << test.getPath() << std::endl;
+    // std::cout << test.writeBlank("ahaw");
+    // // std::cout << test.writeBlank("teswadauwut");
+
+    // std::cout << std::endl << test.readWhole();
+    // test.append("test");
+    // test.append("test2");
+
+
+    // test.append("-------");
+    // test.append(";3");
+    // test.keepAlive(true);
+    // test.append("zoahazo");
+
     return 0;
 }
