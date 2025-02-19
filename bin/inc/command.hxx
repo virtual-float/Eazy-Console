@@ -3,7 +3,7 @@
  * @brief Header file of command.hxx
  * @author Krystian Turek
  * 
- * @date February 7th, 2025
+ * @date February 17th, 2025
  */
 #pragma once
 #ifndef COMMAND_HXX_INCLUDED
