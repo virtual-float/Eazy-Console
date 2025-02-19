@@ -36,7 +36,7 @@ for %%f in (%srcBINDIR%\*.cpp) do (
     SET "outputfile=!file:.cpp=.o!"
     SET "outputfile=!outputfile:%srcBINDIR%=%objBINDIR%!"
     echo !outputfile!
-    echo compling !file!
+    echo compling !file! ...
     g++ -c !file! %gpar% %fullcver% -I%incBINDIR% -o !outputfile!
     if !errorlevel! neq 0 exit /b !errorlevel!
     SET alloutputfiles=%alloutputfiles% !outputfile!
