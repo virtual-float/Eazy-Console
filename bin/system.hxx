@@ -13,6 +13,7 @@
 
 #ifdef __WIN32 or __WIN64
 #include "command.hxx"
+#include "fileman.hxx"
 #endif // Win32 and Win64 supports
 
 #endif // C++17 or latest
